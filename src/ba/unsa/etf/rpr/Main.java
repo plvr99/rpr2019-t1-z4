@@ -7,7 +7,7 @@ public class Main {
     private static Korpa korpa = new Korpa();
     private static Supermarket supermarket = new Supermarket();
 
-    private static void unosArtikalaUMarket(){
+    private static void unosArtikalaUMarket() throws Exception {
         supermarket.dodajArtikl(new Artikl("Biciklo", 1000, "1"));
         supermarket.dodajArtikl(new Artikl("Biciklo", 1000, "2"));
         supermarket.dodajArtikl(new Artikl("Biciklo", 1000, "3"));
@@ -36,7 +36,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //      Kreirati program koji modelira supermarket. Kupac ima korpu koja moze sadrzavati maksimalno 50 artikala.
 //      Supermarket maksimalno sadrzi 1000 artikala. Artikl je odredjen svojim nazivom, cijenom i kodom.
 //      Radi jednostavnosti cemo pretpostaviti da su svi kodovi artikala razliciti. Program treba da radi sljedece:
@@ -49,7 +49,11 @@ public class Main {
 //      ili da ide na checkout gdje se obracunava potpuni iznos. Placanje se vrsi unosom pri cemu se validira da li je
 //      unesena negativna, odnosno dovoljna suma novca.
 
-        unosArtikalaUMarket();
+        try {
+            unosArtikalaUMarket();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for(;;){
             System.out.print("0 - odustani\n1 - dodaj u korpu\n2 - izbaci iz korpe\n3 - checkout\nUnesite opciju: ");
             Scanner scanner = new Scanner(System.in);
