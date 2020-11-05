@@ -1,8 +1,13 @@
 package ba.unsa.etf.rpr;
 
 public class Supermarket {
-    private Artikl[] artikli = new Artikl[1000];
+    private Artikl[] artikli;
     private int brArtikala;
+
+    public Supermarket() {
+        artikli= new Artikl[1000];
+        brArtikala=0;
+    }
 
     public boolean dodajArtikl(Artikl x) throws Exception {
         if(brArtikala < 1000){
@@ -12,13 +17,14 @@ public class Supermarket {
         return true;
     }
 
+
     public Artikl izbaciArtiklSaKodom(String kod){
-        Artikl rez = new Artikl("x",1,"x");
-        for (int i = 0; i < artikli.length; i++) {
+        Artikl rez = null;
+        for (int i = 0; i < brArtikala; i++) {
             if(artikli[i].getKod().equals(kod)){
                 rez = artikli[i];
                 artikli[i]=null;
-                for (int j = i; j < artikli.length -1; j++) {
+                for (int j = i; j < brArtikala; j++) {
                     artikli[j] = artikli[j+1];
                 }
                 brArtikala = brArtikala -1;
